@@ -3,7 +3,7 @@ from colored import fg,attr
 import inquirer 
 from texttable import *
 
-print(fg(82) + "Welcome to Fresh Groces!!" + attr(0))
+print(fg(87) + "Welcome to Fresh Groces!!" + attr(0))
 
 times = "y"
 while times.lower() == 'y':
@@ -11,7 +11,7 @@ while times.lower() == 'y':
     Loginquery = [
         inquirer.List("login",
                     message = "Choose your section : ",
-                    choices = ["Checkout", "Employee records", "Inventory"], default = "checkout"),
+                    choices = ["Checkout", "Employee records", "Inventory",], default = "checkout"),
     ]
 
     rec = inquirer.prompt(Loginquery)
@@ -25,15 +25,8 @@ while times.lower() == 'y':
 
 
     elif rec["login"] == "Employee records":
-        time='y'
         #Program to Show all employee records, add new records and select a single record
-        while time.lower() == 'y':
-            from components import emp
-            time = input('do more?(y/n) : ')
-            if time.lower() == 'y':
-                time = 'y'
-            else:
-                print(fg(200)+'End of search'+attr(0))
+        from components import emp
 
                 
     elif rec["login"] == 'Inventory':
