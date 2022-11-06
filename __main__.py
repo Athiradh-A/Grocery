@@ -3,6 +3,7 @@ from colored import fg,attr
 import inquirer 
 from texttable import *
 
+print(fg(82) + "Welcome to Fresh Groces!!" + attr(0))
 
 times = "y"
 while times.lower() == 'y':
@@ -41,7 +42,7 @@ while times.lower() == 'y':
         from components import inventory
 
     #Asking user if He/She wants to repeat program 
-    times = input(fg(86)+"Want to do anything?(Y/N):"+attr(0))
+    times = input(fg(86)+"Want to do anything?\nCheckout\nEmployee records\nInventory\n(Y/N):"+attr(0))
 
 
 #Good-Bye message to the user
