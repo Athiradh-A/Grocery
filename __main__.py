@@ -37,7 +37,7 @@ while times.lower() == 'y':
 
                 
     elif rec["login"] == 'Inventory':
-        #Program to show all records, add record, select a single record
+        #Program to show all item records, add new record, select a single item record
         print("Selected Inventory" + fg(23),attr(0))
         from components import inventory
 
