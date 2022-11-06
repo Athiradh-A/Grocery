@@ -89,11 +89,13 @@ while time.lower() =='y':
         print(fg(169)+"You're not the admin!!"+attr(0))
         break        
         
+    #calling the functions main() and read()
     main()
     read()      
 
-    time = input(fg(72) + "Do more?(Y/N) :" + attr(0))
+#to run the whole program one more time
+    time = input(fg(72) + "Want to run program once more\nAll records\nspecified record\nAdd record\n(Y/N):" + attr(0))
 
-    
 
+print(fg(99) + "Database has been closed" + attr(0))   
 
