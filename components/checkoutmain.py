@@ -30,7 +30,7 @@ while bill.lower() == 'y':
     bill_amt = bill_amt + sum(price)
     
     #Selecting from the Table Items
-    cursor.execute("select Item_name,"+ str(Quan) +"*price from items"+" Where Item_name='%s'"%(item))
+    cursor.execute("select Item_name,Qty,"+ str(Quan) +"*price from items"+" Where Item_name='%s'"%(item))
     items = cursor.fetchall()
     for zeroitem in items:
         if zeroitem[1] == 0:
