@@ -11,7 +11,7 @@ ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
 
 app = ctk.CTk()
-app.title("Grocery DBMS Frontend")
+app.title("Fresh Groces")
 app.geometry("1100x700")
 app.configure(bg="#f6f6f6")
 
@@ -40,7 +40,7 @@ def get_available_items():
 
 def show_checkout():
     clear_content()
-    ctk.CTkLabel(content, text="Checkout Section", font=("Segoe UI", 24, "bold")).pack(pady=18)
+    ctk.CTkLabel(content, text="Checkout Section", font=("Futura", 24, "bold")).pack(pady=18)
     selected_item = ctk.StringVar(value="Select item")
     quantity_var = ctk.StringVar()
     bill_items = []
@@ -49,10 +49,10 @@ def show_checkout():
     form_frame = ctk.CTkFrame(content, fg_color="#f5f5f5", corner_radius=0)
     form_frame.pack(pady=10, padx=10, fill="x")
 
-    ctk.CTkLabel(form_frame, text="Item:", font=("Segoe UI", 15)).grid(row=0, column=0, padx=15, pady=12, sticky="w")
+    ctk.CTkLabel(form_frame, text="Item:", font=("Futura", 15)).grid(row=0, column=0, padx=15, pady=12, sticky="w")
     item_dropdown = ctk.CTkComboBox(form_frame, values=get_available_items(), variable=selected_item, width=250)
     item_dropdown.grid(row=0, column=1, padx=15, pady=12, sticky="w")
-    ctk.CTkLabel(form_frame, text="Quantity:", font=("Segoe UI", 15)).grid(row=1, column=0, padx=15, pady=12, sticky="w")
+    ctk.CTkLabel(form_frame, text="Quantity:", font=("Futura", 15)).grid(row=1, column=0, padx=15, pady=12, sticky="w")
     qty_entry = ctk.CTkEntry(form_frame, textvariable=quantity_var, width=250)
     qty_entry.grid(row=1, column=1, padx=15, pady=12, sticky="w")
 
@@ -66,7 +66,7 @@ def show_checkout():
         bill_labels.clear()
         headers = ["Item", "Qty", "Rate (₹)", "Amount (₹)"]
         for i, head in enumerate(headers):
-            lb = ctk.CTkLabel(bill_frame, text=head, font=("Segoe UI", 14, "bold"), width=150)
+            lb = ctk.CTkLabel(bill_frame, text=head, font=("Futura", 14, "bold"), width=150)
             lb.grid(row=0, column=i, padx=12)
             bill_labels.append(lb)
         for idx, item in enumerate(bill_items, start=1):
@@ -77,12 +77,12 @@ def show_checkout():
                     val = f"{val.normalize():.3f}"
                 elif key in ("rate", "amt"):
                     val = f"{val.normalize():.2f}"
-                lb = ctk.CTkLabel(bill_frame, text=str(val), font=("Segoe UI", 13), width=150)
+                lb = ctk.CTkLabel(bill_frame, text=str(val), font=("Futura", 13), width=150)
                 lb.grid(row=idx, column=col_idx, padx=12)
                 bill_labels.append(lb)
         total = sum(x["amt"] for x in bill_items)
         total_amount_var.set(f"{total:.2f}")
-        total_lb = ctk.CTkLabel(bill_frame, text=f"Total: ₹ {total:.2f}", font=("Segoe UI", 16, "bold"))
+        total_lb = ctk.CTkLabel(bill_frame, text=f"Total: ₹ {total:.2f}", font=("Futura", 16, "bold"))
         total_lb.grid(row=len(bill_items)+1, column=0, columnspan=4, pady=12, sticky="w", padx=12)
         bill_labels.append(total_lb)
 
@@ -170,14 +170,14 @@ def show_checkout():
         bill_win.title(f"Receipt #{bill_no}")
         bill_win.geometry("420x600")
         bill_win.resizable(True, True)
-        receipt_box = ctk.CTkTextbox(bill_win, width=400, height=580, font=("Courier New", 13))
+        receipt_box = ctk.CTkTextbox(bill_win, width=400, height=580, font=("Futura New", 13))
         receipt_box.pack(padx=10, pady=10, expand=True, fill="both")
         receipt_box.insert("end", "\n".join(receipt_lines))
         receipt_box.configure(state="disabled")
         bill_items.clear()
         update_bill_preview()
 
-    ctk.CTkButton(content, text="Finalize Bill", command=finalize_bill, fg_color="#34a853", font=("Segoe UI", 18, "bold")).pack(pady=10)
+    ctk.CTkButton(content, text="Finalize Bill", command=finalize_bill, fg_color="#34a853", font=("Futura", 18, "bold")).pack(pady=10)
 
 # ---------- Admin Password ----------
 def prompt_admin_password():
@@ -187,9 +187,9 @@ def prompt_admin_password():
 # ------------- Employee Management -------------
 def show_employee():
     clear_content()
-    ctk.CTkLabel(content, text="Employee Records (Admin Only)", font=("Segoe UI", 24, "bold")).pack(pady=20)
+    ctk.CTkLabel(content, text="Employee Records (Admin Only)", font=("Futura", 24, "bold")).pack(pady=20)
     if not prompt_admin_password():
-        ctk.CTkLabel(content, text="Access Denied", font=("Segoe UI", 16), text_color="red").pack(pady=40)
+        ctk.CTkLabel(content, text="Access Denied", font=("Futura", 16), text_color="red").pack(pady=40)
         return
     emp_list = []
     def load_employees():
@@ -208,10 +208,10 @@ def show_employee():
             widget.destroy()
         headers = ["ID", "Name", "Age", "Salary", "Phone"]
         for c, head in enumerate(headers):
-            ctk.CTkLabel(table_frame, text=head, font=("Segoe UI", 13, "bold"), width=100).grid(row=0, column=c, padx=10)
+            ctk.CTkLabel(table_frame, text=head, font=("Futura", 13, "bold"), width=100).grid(row=0, column=c, padx=10)
         for r, emp in enumerate(emp_list, start=1):
             for c, val in enumerate(emp):
-                ctk.CTkLabel(table_frame, text=str(val), font=("Segoe UI", 12), width=100).grid(row=r, column=c, padx=10)
+                ctk.CTkLabel(table_frame, text=str(val), font=("Futura", 12), width=100).grid(row=r, column=c, padx=10)
     def add_employee():
         win = ctk.CTkToplevel(app)
         win.title("Add Employee")
@@ -251,9 +251,9 @@ def show_employee():
 # --------------- Inventory Management -------------
 def show_inventory():
     clear_content()
-    ctk.CTkLabel(content, text="Inventory Management (Admin Only)", font=("Segoe UI", 24, "bold")).pack(pady=20)
+    ctk.CTkLabel(content, text="Inventory Management (Admin Only)", font=("Futura", 24, "bold")).pack(pady=20)
     if not prompt_admin_password():
-        ctk.CTkLabel(content, text="Access Denied", font=("Segoe UI", 16), text_color="red").pack(pady=40)
+        ctk.CTkLabel(content, text="Access Denied", font=("Futura", 16), text_color="red").pack(pady=40)
         return
     inv_list = []
     def load_inventory():
@@ -272,10 +272,10 @@ def show_inventory():
             widget.destroy()
         headers = ["Code", "Name", "Qty", "Price"]
         for c, head in enumerate(headers):
-            ctk.CTkLabel(table_frame, text=head, font=("Segoe UI", 13, "bold"), width=100).grid(row=0, column=c, padx=10)
+            ctk.CTkLabel(table_frame, text=head, font=("Futura", 13, "bold"), width=100).grid(row=0, column=c, padx=10)
         for r, item in enumerate(inv_list, start=1):
             for c, val in enumerate(item):
-                ctk.CTkLabel(table_frame, text=str(val), font=("Segoe UI", 12), width=100).grid(row=r, column=c, padx=10)
+                ctk.CTkLabel(table_frame, text=str(val), font=("Futura", 12), width=100).grid(row=r, column=c, padx=10)
     def add_item():
         win = ctk.CTkToplevel(app)
         win.title("Add Item")
@@ -315,7 +315,7 @@ def show_inventory():
 # ------------- Show Items & Prices (read-only) -------------
 def show_items():
     clear_content()
-    ctk.CTkLabel(content, text="Available Items and Prices", font=("Segoe UI", 24, "bold")).pack(pady=20)
+    ctk.CTkLabel(content, text="Available Items and Prices", font=("Futura", 24, "bold")).pack(pady=20)
     try:
         conn = db.connect(host='localhost', user='root', passwd='admin', database="Grocery")
         cursor = conn.cursor()
@@ -327,21 +327,21 @@ def show_items():
         return
     table_frame = ctk.CTkFrame(content, fg_color="#f5f7fa", corner_radius=0)
     table_frame.pack(padx=20, pady=10, fill="both", expand=True)
-    ctk.CTkLabel(table_frame, text="Item Name", font=("Segoe UI", 15, "bold"), width=200).grid(row=0, column=0, padx=10, pady=10)
-    ctk.CTkLabel(table_frame, text="Price (₹)", font=("Segoe UI", 15, "bold"), width=100).grid(row=0, column=1, padx=10, pady=10)
+    ctk.CTkLabel(table_frame, text="Item Name", font=("Futura", 15, "bold"), width=200).grid(row=0, column=0, padx=10, pady=10)
+    ctk.CTkLabel(table_frame, text="Price (₹)", font=("Futura", 15, "bold"), width=100).grid(row=0, column=1, padx=10, pady=10)
     for i, (iname, price) in enumerate(rows, start=1):
-        ctk.CTkLabel(table_frame, text=iname, font=("Segoe UI", 14), width=200).grid(row=i, column=0, padx=10, pady=6)
-        ctk.CTkLabel(table_frame, text=f"{price:.2f}", font=("Segoe UI", 14), width=100).grid(row=i, column=1, padx=10, pady=6)
+        ctk.CTkLabel(table_frame, text=iname, font=("Futura", 14), width=200).grid(row=i, column=0, padx=10, pady=6)
+        ctk.CTkLabel(table_frame, text=f"{price:.2f}", font=("Futura", 14), width=100).grid(row=i, column=1, padx=10, pady=6)
 
 # ------------- Sidebar Buttons / Navigation -------------
-ctk.CTkLabel(sidebar, text="Menu", font=("Segoe UI", 21, "bold")).pack(pady=(30,32))
-ctk.CTkButton(sidebar, text="Checkout", command=show_checkout, font=("Segoe UI", 15), fg_color="#eaeaea",
+ctk.CTkLabel(sidebar, text="Menu", font=("Futura", 21, "bold")).pack(pady=(30,32))
+ctk.CTkButton(sidebar, text="Checkout", command=show_checkout, font=("Futura", 15), fg_color="#eaeaea",
               text_color="#343434", corner_radius=12).pack(pady=10, fill="x", padx=10)
-ctk.CTkButton(sidebar, text="Show Items & Prices", command=show_items, font=("Segoe UI", 15), fg_color="#eaeaea",
+ctk.CTkButton(sidebar, text="Show Items & Prices", command=show_items, font=("Futura", 15), fg_color="#eaeaea",
               text_color="#343434", corner_radius=12).pack(pady=10, fill="x", padx=10)
-ctk.CTkButton(sidebar, text="Employee Records", command=show_employee, font=("Segoe UI", 15), fg_color="#eaeaea",
+ctk.CTkButton(sidebar, text="Employee Records", command=show_employee, font=("Futura", 15), fg_color="#eaeaea",
               text_color="#343434", corner_radius=12).pack(pady=10, fill="x", padx=10)
-ctk.CTkButton(sidebar, text="Inventory", command=show_inventory, font=("Segoe UI", 15), fg_color="#eaeaea",
+ctk.CTkButton(sidebar, text="Inventory", command=show_inventory, font=("Futura", 15), fg_color="#eaeaea",
               text_color="#343434", corner_radius=12).pack(pady=10, fill="x", padx=10)
 
 show_checkout()
